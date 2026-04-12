@@ -1,0 +1,326 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: var(--cream);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.header.scrolled {
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 48px;
+  height: 80px;
+}
+
+/* Logo */
+.logo img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.logo:hover img {
+  transform: scale(1.04);
+}
+
+/* Nav links */
+.navLinks {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 48px;
+}
+
+.navLink {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--dark);
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.2s ease;
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--pink);
+  transition: width 0.25s ease;
+}
+
+.navLink:hover {
+  color: var(--pink);
+}
+
+.navLink:hover::after,
+.navLink.active::after {
+  width: 100%;
+}
+
+.navLink.active {
+  color: var(--pink);
+}
+
+/* Right actions */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.signIn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: var(--dark);
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.signIn:hover {
+  color: var(--pink);
+}
+
+/* User menu (logged in) */
+.userMenu {
+  position: relative;
+}
+
+.userBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: var(--dark);
+  text-transform: uppercase;
+  transition: color 0.2s;
+  padding: 0;
+}
+
+.userBtn:hover {
+  color: var(--pink);
+}
+
+.userAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--pink);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.userName {
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.userDropdown {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  background: #fff;
+  border: 1px solid #e8e3dc;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  padding: 12px;
+  min-width: 200px;
+  z-index: 200;
+}
+
+.userEmail {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: #999;
+  padding: 4px 8px 10px;
+  border-bottom: 1px solid #f0ece6;
+  margin-bottom: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.signOutBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #dc2626;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background 0.15s;
+}
+
+.signOutBtn:hover {
+  background: #fef2f2;
+}
+
+.dropdownLink {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #4a463d;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background 0.15s;
+  text-decoration: none;
+}
+
+.dropdownLink:hover {
+  background: #f5f0ea;
+}
+
+/* Mobile sign out button */
+.mobileLinkBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  color: #dc2626;
+}
+
+/* Cart button */
+.cartBtn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: var(--dark);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.cartBtn:hover {
+  color: var(--pink);
+  transform: scale(1.1);
+}
+
+.cartBadge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: var(--pink);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hamburger - mobile only */
+.hamburger {
+  display: none;
+  background: none;
+  color: var(--dark);
+  padding: 4px;
+  transition: color 0.2s;
+}
+
+.hamburger:hover {
+  color: var(--pink);
+}
+
+/* Mobile menu */
+.mobileMenu {
+  background-color: var(--cream);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.mobileMenu ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 24px 20px;
+}
+
+.mobileLink {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--dark);
+  text-transform: uppercase;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+  transition: color 0.2s;
+}
+
+.mobileLink:last-child {
+  border-bottom: none;
+}
+
+.mobileLink:hover {
+  color: var(--pink);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navLinks {
+    display: none;
+  }
+
+  .signIn span {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav {
+    padding: 0 20px;
+  }
+}

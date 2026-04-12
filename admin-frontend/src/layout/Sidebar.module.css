@@ -1,0 +1,88 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 100vh;
+  background-color: var(--sidebar-bg);
+  display: flex;
+  flex-direction: column;
+  padding: 28px 0 24px;
+  z-index: 100;
+}
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 0 24px 32px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.brandText {
+  font-family: 'Titan One', cursive;
+  font-size: 1.6rem;
+  color: #fff;
+  letter-spacing: 0.04em;
+}
+
+.brandTag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pink);
+  background: rgba(233,30,140,0.15);
+  padding: 2px 8px;
+  border-radius: 100px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 20px 12px;
+  flex: 1;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 14px;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.5);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.link:hover {
+  background-color: var(--sidebar-hover);
+  color: rgba(255,255,255,0.85);
+}
+
+.active {
+  background-color: var(--pink) !important;
+  color: #fff !important;
+}
+
+.logout {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 26px;
+  margin: 0 12px;
+  background: none;
+  border: none;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.35);
+  border-radius: 10px;
+  transition: color 0.15s, background 0.15s;
+}
+
+.logout:hover {
+  color: var(--red);
+  background-color: rgba(239,68,68,0.1);
+}

@@ -1,0 +1,17 @@
+.shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main {
+  margin-left: 240px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  margin-top: 68px;
+  padding: 32px;
+  flex: 1;
+}

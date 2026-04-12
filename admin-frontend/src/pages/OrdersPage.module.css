@@ -1,0 +1,50 @@
+.page { display: flex; flex-direction: column; gap: 20px; }
+
+.controls { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+
+.searchWrap { position: relative; flex: 1; max-width: 340px; }
+.searchIcon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+.searchInput { width: 100%; background: var(--white); border: 1.5px solid var(--border); border-radius: 10px; padding: 10px 14px 10px 36px; font-size: 0.85rem; font-weight: 600; outline: none; transition: border-color 0.2s; }
+.searchInput:focus { border-color: var(--pink); }
+
+.filters { display: flex; align-items: center; gap: 8px; color: var(--muted); }
+.filterBtn { padding: 8px 16px; border-radius: 100px; border: 1.5px solid var(--border); background: var(--white); font-size: 0.82rem; font-weight: 700; color: var(--muted); transition: all 0.15s; }
+.filterBtn:hover { border-color: var(--brand); color: var(--brand); }
+.filterActive { border-color: var(--pink) !important; background: var(--pink) !important; color: #fff !important; }
+
+.card { background: var(--white); border-radius: 16px; border: 1px solid var(--border); overflow: hidden; }
+.table { width: 100%; border-collapse: collapse; }
+.table th { padding: 12px 20px; text-align: left; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); background: var(--cream); border-bottom: 1px solid var(--border); }
+.table td { padding: 14px 20px; font-size: 0.88rem; font-weight: 600; border-bottom: 1px solid var(--border); vertical-align: middle; }
+.table tr:last-child td { border-bottom: none; }
+.table tr:hover td { background: #fdfcfb; }
+
+.orderId { font-weight: 800; color: var(--brand); }
+.name { font-weight: 700; }
+.sub { color: var(--muted); font-size: 0.8rem; margin-top: 2px; }
+.items { color: var(--muted); font-size: 0.82rem; max-width: 220px; }
+.total { font-weight: 800; color: var(--dark); }
+.empty { padding: 32px; text-align: center; color: var(--muted); font-weight: 600; }
+
+.statusSelect { padding: 6px 10px; border-radius: 100px; border: none; font-size: 0.75rem; font-weight: 800; cursor: pointer; outline: none; }
+.statusSelect.green  { background: rgba(34,197,94,0.12);  color: var(--green);  }
+.statusSelect.orange { background: rgba(249,115,22,0.12); color: var(--orange); }
+.statusSelect.blue   { background: rgba(59,130,246,0.12); color: var(--blue);   }
+.statusSelect.red    { background: rgba(239,68,68,0.12);  color: var(--red);    }
+
+.viewBtn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 8px; border: 1.5px solid var(--border); background: none; font-size: 0.8rem; font-weight: 800; color: var(--brand); transition: all 0.15s; }
+.viewBtn:hover { border-color: var(--pink); color: var(--pink); }
+
+/* Modal */
+.overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 200; display: flex; align-items: center; justify-content: center; }
+.modal { background: var(--white); border-radius: 20px; padding: 36px; width: 520px; max-width: 95vw; }
+.modalTitle { font-family: 'Titan One', cursive; font-size: 1.4rem; color: var(--brand); margin-bottom: 24px; }
+.modalGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 28px; }
+.modalLabel { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 4px; }
+.badge { display: inline-flex; padding: 4px 12px; border-radius: 100px; font-size: 0.75rem; font-weight: 800; }
+.badge.green  { background: rgba(34,197,94,0.12);  color: var(--green);  }
+.badge.orange { background: rgba(249,115,22,0.12); color: var(--orange); }
+.badge.blue   { background: rgba(59,130,246,0.12); color: var(--blue);   }
+.badge.red    { background: rgba(239,68,68,0.12);  color: var(--red);    }
+.closeBtn { width: 100%; padding: 13px; background: var(--dark); color: #fff; border: none; border-radius: 0; font-size: 0.88rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; transition: background 0.2s; }
+.closeBtn:hover { background: var(--pink); }

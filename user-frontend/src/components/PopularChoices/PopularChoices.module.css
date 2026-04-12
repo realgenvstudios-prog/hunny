@@ -1,0 +1,208 @@
+.section {
+  background-color: var(--cream);
+  padding: 160px 60px 120px 100px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ── Header row ── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 48px;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  font-weight: 400;
+  color: var(--dark);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.emoji {
+  font-style: normal;
+}
+
+.viewMenu {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--dark);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: opacity 0.2s ease;
+}
+
+.viewMenu:hover {
+  opacity: 0.65;
+}
+
+/* ── Product grid ── */
+.gridWrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 8px;
+}
+
+.gridWrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 260px);
+  gap: 28px;
+  width: max-content;
+}
+
+/* ── Card ── */
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--cream);
+  border-radius: 16px;
+  padding: 20px 20px 24px;
+  cursor: pointer;
+}
+
+.imageWrap {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  height: 260px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.image {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  user-select: none;
+  display: block;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.name {
+  font-family: var(--font-body);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--dark);
+  margin: 0;
+}
+
+.description {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: #888;
+  margin: 0;
+}
+
+/* ── Stars ── */
+.stars {
+  display: flex;
+  gap: 3px;
+  margin: 4px 0 2px;
+}
+
+.starFilled {
+  color: #f5a623;
+}
+
+.starEmpty {
+  color: #ddd;
+}
+
+/* ── Price ── */
+.price {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--dark);
+  margin: 4px 0 10px;
+}
+
+/* ── Order Now button ── */
+.btn {
+  display: inline-block;
+  width: fit-content;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #fff;
+  background-color: #2d2d2d;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.btn:hover {
+  background-color: #111;
+  transform: translateY(-2px);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .section {
+    padding: 80px 0 60px;
+  }
+
+  .container {
+    padding: 0 24px;
+  }
+
+  .header {
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .heading {
+    font-size: 2rem;
+  }
+
+  .gridWrapper {
+    padding: 0 24px 16px;
+    margin: 0 -24px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(5, 180px);
+    gap: 16px;
+  }
+
+  .imageWrap {
+    height: 160px;
+  }
+
+  .name {
+    font-size: 1rem;
+  }
+
+  .price {
+    font-size: 0.95rem;
+  }
+
+  .btn {
+    padding: 8px 18px;
+    font-size: 0.78rem;
+  }
+}

@@ -1,0 +1,291 @@
+.page {
+  min-height: calc(100vh - 70px);
+  background: #fff;
+  padding: 48px 80px 80px;
+}
+
+.inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #888;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.back:hover { color: var(--dark); }
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: flex-start;
+}
+
+/* ── Left image ── */
+.imgWrap {
+  position: sticky;
+  top: 100px;
+}
+.img {
+  width: 100%;
+  max-width: 420px;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 48px rgba(0,0,0,0.12));
+}
+
+/* ── Details ── */
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.serves {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: #aaa;
+  margin: 0 0 8px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.title {
+  font-family: var(--font-titan);
+  font-size: 3.6rem;
+  font-weight: 400;
+  color: #4A463D;
+  line-height: 1;
+  margin: 0 0 18px;
+}
+
+.desc {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.65;
+  margin: 0 0 18px;
+}
+
+.price {
+  font-family: var(--font-body);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--dark);
+  margin: 0 0 28px;
+}
+.price span {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #888;
+}
+
+/* ── Sections ── */
+.section {
+  margin-bottom: 24px;
+}
+
+.label {
+  font-family: var(--font-body);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #888;
+  text-transform: uppercase;
+  margin: 0 0 14px;
+}
+
+/* ── Flavor grid ── */
+.flavorGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.flavorCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 8px 10px;
+  border-radius: 14px;
+  border: 2px solid #e8e5e0;
+  background: #fafaf8;
+  cursor: default;
+  transition: border-color 0.18s, background 0.18s;
+}
+
+.flavorSelected {
+  border-color: #4A463D;
+  background: #f5f3ef;
+}
+
+.flavorImg {
+  width: 64px;
+  height: 64px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.flavorImgPlaceholder {
+  width: 64px;
+  height: 64px;
+  border-radius: 10px;
+  background: #e8e5e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-titan);
+  font-size: 1.4rem;
+  color: #888;
+}
+
+.flavorName {
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 0.82rem;
+  color: #4A463D;
+  text-align: center;
+  margin: 0;
+}
+
+.flavorQty {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Qty buttons */
+.qtyBtn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #4A463D;
+  transition: all 0.18s;
+  flex-shrink: 0;
+}
+.qtyBtn:hover:not(:disabled) {
+  border-color: #4A463D;
+  background: #4A463D;
+  color: #fff;
+}
+.qtyBtn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.qtyNum {
+  font-family: var(--font-titan);
+  font-size: 1rem;
+  color: #4A463D;
+  min-width: 16px;
+  text-align: center;
+}
+
+/* ── Summary ── */
+.summary {
+  background: #f7f4ef;
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: #555;
+}
+.summaryRow strong { color: #4A463D; font-weight: 800; }
+
+.summaryTotal {
+  font-size: 1rem;
+  font-weight: 800;
+  border-top: 1px solid #e8e5e0;
+  padding-top: 8px;
+  margin-top: 4px;
+}
+.summaryTotal strong { font-size: 1.05rem; }
+
+.shortfall {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: #e05c00;
+  font-weight: 700;
+  margin: 4px 0 0;
+}
+
+.partialNote {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #e05c00;
+}
+
+/* ── Add button ── */
+.addBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 18px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  background: #4A463D;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  margin-bottom: 16px;
+}
+.addBtn:hover:not(:disabled) { opacity: 0.85; }
+.addedBtn { background: #2e7d32; }
+.addBtnDisabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.disclaimer {
+  font-size: 0.78rem;
+  color: #bbb;
+  margin: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .page { padding: 32px 24px 60px; }
+  .layout { grid-template-columns: 1fr; gap: 32px; }
+  .imgWrap { position: static; text-align: center; }
+  .img { max-width: 260px; }
+  .title { font-size: 2.6rem; }
+  .flavorGrid { grid-template-columns: repeat(2, 1fr); }
+}

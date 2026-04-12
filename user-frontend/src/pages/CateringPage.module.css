@@ -1,0 +1,328 @@
+/* ── Booking Section ── */
+.booking {
+  background-color: #fbf8f4;
+  padding: 100px 60px;
+}
+
+.bookingInner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+/* ── Left info ── */
+.info {
+  position: sticky;
+  top: 100px;
+}
+
+.infoLabel {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: #e91e8c;
+  text-transform: uppercase;
+  margin: 0 0 16px;
+}
+
+.infoHeading {
+  font-family: 'Titan One', cursive;
+  font-size: 3.2rem;
+  line-height: 1.05;
+  color: #4a463d;
+  text-transform: uppercase;
+  margin: 0 0 20px;
+}
+
+.infoSub {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  color: #888;
+  font-weight: 500;
+  line-height: 1.7;
+  margin: 0 0 40px;
+}
+
+.infoItems {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  border-top: 1px solid #e8e3dc;
+  padding-top: 32px;
+}
+
+.infoItem {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.iconWrap {
+  width: 44px;
+  height: 44px;
+  background-color: #fff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e91e8c;
+  flex-shrink: 0;
+}
+
+.infoItemLabel {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #aaa;
+  margin: 0 0 4px;
+}
+
+.infoItemValue {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #2d2d2d;
+  margin: 0;
+}
+
+/* ── Form card ── */
+.formCard {
+  background-color: #ffffff;
+  border-radius: 24px;
+  padding: 52px;
+  box-shadow: 0 2px 24px rgba(0, 0, 0, 0.04);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #4a463d;
+}
+
+.input,
+.textarea {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #2d2d2d;
+  background-color: #fbf8f4;
+  border: 2px solid #e8e3dc;
+  border-radius: 12px;
+  padding: 14px 18px;
+  outline: none;
+  transition: border-color 0.2s ease;
+  resize: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: #bbb;
+}
+
+.input:focus,
+.textarea:focus {
+  border-color: #e91e8c;
+}
+
+.submitRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #2d2d2d;
+  color: #fff;
+  border: none;
+  padding: 16px 36px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 0;
+  transition: background 0.2s ease;
+}
+
+.submit:hover:not(:disabled) {
+  background-color: #e91e8c;
+}
+
+.submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .booking {
+    padding: 60px 20px;
+  }
+
+  .bookingInner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .info {
+    position: static;
+  }
+
+  .infoLabel {
+    font-size: 0.72rem;
+  }
+
+  .infoHeading {
+    font-size: 1.8rem;
+  }
+
+  .infoSub {
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+  }
+
+  .infoItems {
+    display: none;
+  }
+
+  .iconWrap {
+    width: 36px;
+    height: 36px;
+  }
+
+  .infoItemLabel {
+    font-size: 0.7rem;
+  }
+
+  .infoItemValue {
+    font-size: 0.85rem;
+  }
+
+  .formCard {
+    padding: 24px 16px;
+    border-radius: 16px;
+  }
+
+  .label {
+    font-size: 0.72rem;
+  }
+
+  .input,
+  .textarea {
+    font-size: 0.88rem;
+    padding: 12px 14px;
+  }
+
+  .row2 {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .submit {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 12px 20px;
+    letter-spacing: 0.04em;
+  }
+}
+
+/* ── Success state ── */
+.success {
+  text-align: center;
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.successIcon {
+  width: 72px;
+  height: 72px;
+  background-color: #d1fae5;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #059669;
+}
+
+.successTitle {
+  font-family: 'Titan One', cursive;
+  font-size: 2rem;
+  color: #4a463d;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.successSub {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  color: #888;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .booking {
+    padding: 80px 24px;
+  }
+
+  .bookingInner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .info {
+    position: static;
+  }
+
+  .infoHeading {
+    font-size: 2.4rem;
+  }
+
+  .formCard {
+    padding: 32px 24px;
+  }
+
+  .row2 {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,265 @@
+.section {
+  background-color: var(--cream);
+  padding: 100px 0 120px;
+}
+
+/* ── Heading ── */
+.heading {
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  font-weight: 400;
+  color: #8BC34A;
+  text-align: center;
+  margin: 0 0 56px;
+  padding: 0 40px;
+}
+
+/* ── Carousel track ── */
+.carouselOuter {
+  width: 100vw;
+  max-width: 100vw;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 20px 60px;
+  box-sizing: border-box;
+}
+
+.carouselOuter::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel {
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 32px;
+  width: max-content;
+  margin: 0 auto;
+}
+
+/* ── Base card ── */
+.card {
+  border-radius: 24px;
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex-shrink: 0;
+  width: 500px;
+  min-height: 380px;
+  box-sizing: border-box;
+}
+
+/* ── Active center card wrapper (for AnimatePresence) ── */
+.activeWrap {
+  width: 500px;
+  min-height: 380px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+/* ── Active center card ── */
+.activeCard {
+  background-color: #8BC34A;
+  width: 100%;
+  z-index: 2;
+  box-shadow: 0 20px 60px rgba(139, 195, 74, 0.25);
+}
+
+/* ── Side ghost cards ── */
+.sideCard {
+  background-color: #fff;
+  opacity: 0.85;
+}
+
+.sideAuthor {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.sideAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.sideName {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+/* ── Quote icon ── */
+.quoteIcon {
+  margin-bottom: 16px;
+}
+
+/* ── Stars ── */
+.stars {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.starFilled {
+  color: #f5a623;
+}
+
+.starEmpty {
+  color: rgba(255,255,255,0.4);
+}
+
+/* ── Active quote ── */
+.activeQuote {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.65;
+  margin: 0 0 28px;
+}
+
+/* ── Ghost quote on side cards ── */
+.ghostQuote {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--dark);
+  line-height: 1.65;
+  margin: 0 0 28px;
+  flex: 1;
+}
+
+/* ── Author row ── */
+.author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255,255,255,0.6);
+}
+
+.name {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* ── Dots ── */
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 40px;
+  padding: 0 40px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ccc;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.dotActive {
+  background-color: #8BC34A;
+  transform: scale(1.25);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .section {
+    padding: 80px 0 60px;
+  }
+
+  .heading {
+    font-size: 1.6rem;
+    margin: 0 0 40px;
+  }
+
+  /* Show all cards in a horizontal scroll */
+  .carouselOuter {
+    padding: 12px 20px;
+    overflow-x: auto;
+  }
+
+  .carousel {
+    gap: 16px;
+    justify-content: flex-start;
+  }
+
+  /* All cards same small size */
+  .card {
+    width: 240px;
+    min-height: auto;
+    padding: 24px 20px;
+    border-radius: 18px;
+  }
+
+  .activeWrap {
+    width: 240px;
+    min-height: auto;
+    flex-shrink: 0;
+  }
+
+  .activeCard {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Show side cards on mobile */
+  .sideCard {
+    display: flex;
+  }
+
+  .activeQuote,
+  .ghostQuote {
+    font-size: 0.8rem;
+    margin-bottom: 16px;
+  }
+
+  .stars svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .quoteIcon svg {
+    width: 28px;
+    height: 22px;
+  }
+
+  .avatar {
+    width: 36px;
+    height: 36px;
+  }
+
+  .name {
+    font-size: 0.85rem;
+  }
+
+  .sideAvatar {
+    width: 32px;
+    height: 32px;
+  }
+
+  .sideName {
+    font-size: 0.8rem;
+  }
+}

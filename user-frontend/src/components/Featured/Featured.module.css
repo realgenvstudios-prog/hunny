@@ -1,0 +1,136 @@
+.section {
+  background-color: #ffffff;
+  padding: 80px 60px 64px;
+}
+
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 45% 55%;
+  align-items: flex-start;
+  gap: 0;
+}
+
+/* ── Left column ── */
+.textCol {
+  padding-right: 40px;
+  padding-top: 80px;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  font-weight: 400;
+  color: var(--dark);
+  line-height: 1.2;
+  margin: 0 0 20px;
+  white-space: nowrap;
+}
+
+.body {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: #5a5a5a;
+  line-height: 1.75;
+  margin: 0;
+  max-width: 360px;
+}
+
+/* ── Right column ── */
+.imageCol {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.foodImg {
+  width: 100%;
+  max-width: 540px;
+  display: block;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+}
+
+.badge {
+  position: absolute;
+  top: 14%;
+  left: 2%;
+  width: 145px;
+  z-index: 2;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── View Menu button ── */
+.btnWrap {
+  display: flex;
+  justify-content: center;
+  margin-top: -150px;
+  position: relative;
+  z-index: 3;
+}
+
+.btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  color: #fff;
+  background-color: #2d2d2d;
+  padding: 14px 44px;
+  border-radius: 999px;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.btn:hover {
+  background-color: #111;
+  transform: translateY(-2px);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 24px 48px;
+  }
+
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .textCol {
+    padding-right: 0;
+    padding-top: 20px;
+  }
+
+  .heading {
+    font-size: 2.2rem;
+  }
+
+  .body {
+    max-width: 100%;
+  }
+
+  .imageCol {
+    justify-content: center;
+  }
+
+  .foodImg {
+    max-width: 100%;
+  }
+
+  .badge {
+    width: 110px;
+    top: 10%;
+    left: 0%;
+  }
+
+  .btnWrap {
+    margin-top: -80px;
+  }
+}

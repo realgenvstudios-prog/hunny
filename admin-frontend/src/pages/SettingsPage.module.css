@@ -1,0 +1,156 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.section {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 32px;
+}
+
+.sectionTitle {
+  font-family: 'Titan One', cursive;
+  font-size: 1.1rem;
+  color: var(--dark);
+  margin: 0 0 24px;
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.grid3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+
+.input {
+  padding: 10px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-family: 'Nunito', sans-serif;
+  color: var(--dark);
+  background: var(--cream);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input:focus {
+  border-color: var(--pink);
+}
+
+/* Delivery Zones */
+.zones {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.zone {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--dark);
+}
+
+.removeZone {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  color: var(--muted);
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.removeZone:hover { color: var(--red); }
+
+.addZone {
+  display: flex;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.addZone .input { flex: 1; }
+
+.addZoneBtn {
+  background: var(--pink);
+  color: var(--white);
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-family: 'Titan One', cursive;
+  font-size: 0.85rem;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: opacity 0.2s;
+}
+
+.addZoneBtn:hover { opacity: 0.88; }
+
+.saveBtn {
+  align-self: flex-start;
+  background: var(--pink);
+  color: var(--white);
+  border: none;
+  border-radius: 12px;
+  padding: 14px 40px;
+  font-family: 'Titan One', cursive;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.15s;
+}
+
+.saveBtn:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+/* ── Chips & Dips section ── */
+.sectionNote { font-size: 0.83rem; color: #aaa; margin: -16px 0 20px; }
+.dipList { display: flex; flex-direction: column; gap: 6px; }
+.dipRow { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; background: var(--cream); border-radius: 10px; border: 1.5px solid var(--border); transition: opacity 0.2s; }
+.dipInactive { opacity: 0.45; }
+.dipName { font-weight: 800; font-size: 0.9rem; color: var(--dark); }
+.dipActions { display: flex; align-items: center; gap: 8px; }
+.dipToggle { font-size: 0.75rem; font-weight: 700; padding: 5px 14px; border-radius: 20px; border: none; cursor: pointer; transition: background 0.18s; }
+.dipOn { background: #d4edda; color: #1e6b30; }
+.dipOff { background: #f0e6e6; color: #922; }
+.iconBtn { background: none; border: 1px solid var(--border); border-radius: 8px; padding: 5px 8px; cursor: pointer; color: #666; display: flex; align-items: center; transition: all 0.15s; }
+.iconBtn:hover { background: var(--cream); color: var(--dark); }
+.iconDel:hover { background: #fde8e8; color: var(--red); border-color: var(--red); }
+
+/* Modal overlay for edit */
+.overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 999; display: flex; align-items: center; justify-content: center; }
+.modal { background: var(--white); border-radius: 16px; padding: 32px; width: 100%; max-width: 420px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
+.modalTitle { font-family: 'Titan One', cursive; font-size: 1.1rem; color: var(--dark); margin: 0 0 24px; }
+.cancelBtn { background: var(--cream); color: var(--dark); border: none; border-radius: 10px; padding: 12px 24px; font-weight: 700; font-size: 0.9rem; cursor: pointer; }

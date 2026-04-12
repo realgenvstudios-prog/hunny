@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Titan+One&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream: #F7F4F0;
+  --pink: #E91E8C;
+  --dark: #2D2D2D;
+  --sidebar-bg: #1E1C1A;
+  --sidebar-hover: #2D2B28;
+  --brand: #4A463D;
+  --white: #ffffff;
+  --border: #EDEAE5;
+  --muted: #999;
+  --green: #22C55E;
+  --orange: #F97316;
+  --red: #EF4444;
+  --blue: #3B82F6;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background-color: var(--cream);
+  color: var(--dark);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root { min-height: 100vh; }
+button { cursor: pointer; font-family: inherit; }
+a { text-decoration: none; color: inherit; }
+input, textarea, select { font-family: inherit; }

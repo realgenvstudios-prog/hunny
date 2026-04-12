@@ -1,0 +1,94 @@
+/* =============================================
+   HUNNY - Fast Food E-Commerce Global Styles
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Fredoka+One&family=Titan+One&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --cream: #FBF8F4;
+  --pink: #E91E8C;
+  --pink-dark: #c4177a;
+  --dark: #2D2D2D;
+  --dark-alt: #3a3a3a;
+  --white: #ffffff;
+  --font-body: 'Nunito', sans-serif;
+  --font-display: 'Fredoka One', cursive;
+  --font-titan: 'Titan One', cursive;
+
+  /* legacy kept for any leftover references */
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg: #FBF8F4;
+  --border: #e5e4e7;
+  --code-bg: #f4f3ec;
+  --accent: #E91E8C;
+  --accent-bg: rgba(233, 30, 140, 0.1);
+  --accent-border: rgba(233, 30, 140, 0.5);
+  --social-bg: rgba(244, 243, 236, 0.5);
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background-color: var(--cream);
+  color: var(--dark);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: clip;
+}
+
+h1,
+h2 {
+  font-family: var(--heading);
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-family: var(--font-body);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+

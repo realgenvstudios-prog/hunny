@@ -1,0 +1,193 @@
+.section {
+  background-color: #ffffff;
+  padding: 80px 60px 0;
+  overflow: hidden;
+}
+
+.inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: flex-start;
+  gap: 0;
+}
+
+/* ── Left column: vertical text ── */
+.leftCol {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  padding-bottom: 60px;
+}
+
+.verticalHeading {
+  font-family: var(--font-display);
+  font-size: 5rem;
+  font-weight: 400;
+  color: var(--dark);
+  line-height: 0.9;
+  margin: 0;
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+  letter-spacing: -3px;
+}
+
+.verticalSub {
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--dark);
+  margin: 0;
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+  letter-spacing: 0.5px;
+}
+
+/* ── Center column: lady image ── */
+.centerCol {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+}
+
+.ladyImg {
+  display: block;
+  width: 1600px;
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+  margin-top: -80px;
+}
+
+/* ── Right column: text + button ── */
+.rightCol {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-bottom: 240px;
+  padding-left: 0;
+  margin-right: 80px;
+  margin-left: -120px;
+  overflow: visible;
+  position: relative;
+}
+
+.description {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-style: italic;
+  font-weight: 600;
+  color: #7CB342;
+  line-height: 1.65;
+  margin: 0 0 8px;
+  max-width: 240px;
+}
+
+.arrow {
+  margin-top: 4px;
+  margin-left: -180px;
+  overflow: visible;
+  display: block;
+}
+
+.btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: #fff;
+  background-color: #8BC34A;
+  padding: 12px 28px;
+  border-radius: 999px;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.btn:hover {
+  background-color: #7CB342;
+  transform: translateY(-2px);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .section {
+    padding: 48px 0 0;
+    overflow: hidden;
+  }
+
+  /* Restore 3-column layout: left text | lady | right content */
+  .inner {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: flex-end;
+    gap: 0;
+  }
+
+  /* Left: Refreshing' + never tasted so good side by side, vertical — same as desktop */
+  .leftCol {
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 8px;
+    padding-bottom: 40px;
+    padding-left: 12px;
+  }
+
+  .verticalHeading {
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    font-size: 2.8rem;
+    letter-spacing: -2px;
+  }
+
+  .verticalSub {
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    font-size: 0.8rem;
+  }
+
+  /* Center: lady bigger and centered */
+  .centerCol {
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  .ladyImg {
+    width: 65vw;
+    max-width: none;
+    margin-top: 0;
+    display: block;
+    margin-bottom: -4px;
+  }
+
+  /* Right: description + button */
+  .rightCol {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: flex-start;
+    padding: 0 12px 0 0;
+    margin: 0px 0 0 -32px;
+  }
+
+  .description {
+    text-align: left;
+    max-width: 120px;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+
+  .btn {
+    padding: 6px 14px;
+    font-size: 0.7rem;
+    white-space: nowrap;
+  }
+
+  .arrow {
+    display: none;
+  }
+}
