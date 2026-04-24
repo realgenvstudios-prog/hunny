@@ -28,7 +28,7 @@
 
 /* Modal */
 .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 200; display: flex; align-items: center; justify-content: center; }
-.modal { background: var(--white); border-radius: 20px; padding: 36px; width: 460px; max-width: 95vw; }
+.modal { background: var(--white); border-radius: 20px; padding: 36px; width: 460px; max-width: 95vw; max-height: 90vh; overflow-y: auto; }
 .modalTitle { font-family: 'Titan One', cursive; font-size: 1.4rem; color: var(--brand); margin-bottom: 24px; }
 .form { display: flex; flex-direction: column; gap: 16px; }
 .field { display: flex; flex-direction: column; gap: 6px; }

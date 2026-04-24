@@ -25,7 +25,7 @@
 .delBtn { width: 32px; height: 32px; border-radius: 8px; border: 1.5px solid var(--border); background: none; display: flex; align-items: center; justify-content: center; color: var(--muted); transition: all 0.15s; }
 .delBtn:hover { border-color: var(--red); color: var(--red); }
 .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 200; display: flex; align-items: center; justify-content: center; }
-.modal { background: var(--white); border-radius: 20px; padding: 36px; width: 460px; max-width: 95vw; }
+.modal { background: var(--white); border-radius: 20px; padding: 36px; width: 460px; max-width: 95vw; max-height: 90vh; overflow-y: auto; }
 .modalTitle { font-family: 'Titan One', cursive; font-size: 1.4rem; color: var(--brand); margin-bottom: 24px; }
 .form { display: flex; flex-direction: column; gap: 14px; margin-bottom: 20px; }
 .field { display: flex; flex-direction: column; gap: 6px; }
@@ -43,4 +43,12 @@
   .sCard { flex: 1; min-width: 120px; }
   .card { overflow-x: auto; }
   .table { min-width: 580px; }
+}
+@media (max-width: 480px) {
+  .summaryCards { flex-direction: column; }
+  .sCard { min-width: unset; padding: 16px; }
+  .sVal { font-size: 1.6rem; }
+  .addBtn { width: 100%; justify-content: center; }
+  .table th, .table td { padding: 10px 12px; font-size: 0.82rem; }
+  .modal { padding: 24px 18px; }
 }

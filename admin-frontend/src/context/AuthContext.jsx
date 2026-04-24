@@ -3,8 +3,13 @@ import { supabase } from '../lib/supabase';
 
 const AuthContext = createContext(null);
 
+const ADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAIL;
+
 // Returns true/false on definitive DB result, null on timeout or error (inconclusive)
-async function checkAdmin(uid) {
+async function checkAdmin(uid, email) {
+  // Fast-path: env-configured admin email always wins
+  if (ADMIN_EMAIL && email === ADMIN_EMAIL) return true;
+
   for (let attempt = 0; attempt < 2; attempt++) {
     try {
       const result = await Promise.race([
@@ -44,7 +49,7 @@ export function AuthProvider({ children }) {
             if (active) setLoading(false);
           }
           // Verify in background — only act on a definitive answer (not null)
-          const admin = await checkAdmin(u.id);
+          const admin = await checkAdmin(u.id, u.email);
           if (active && admin !== null) {
             setIsAdmin(admin);
             if (admin) localStorage.setItem('admin_uid', u.id);
@@ -87,7 +92,7 @@ export function AuthProvider({ children }) {
       if (u) {
         // Block UI while we verify — prevents premature redirect back to /login
         if (active) setLoading(true);
-        const admin = await checkAdmin(u.id);
+        const admin = await checkAdmin(u.id, u.email);
         if (active) {
           if (admin === true) {
             setIsAdmin(true);

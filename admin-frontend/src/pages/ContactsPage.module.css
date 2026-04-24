@@ -28,7 +28,7 @@
 
 /* Modal */
 .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 999; display: flex; align-items: center; justify-content: center; padding: 24px; }
-.modal { background: var(--white); border-radius: 20px; padding: 32px; width: 100%; max-width: 520px; box-shadow: 0 24px 64px rgba(0,0,0,0.15); }
+.modal { background: var(--white); border-radius: 20px; padding: 32px; width: 100%; max-width: 520px; box-shadow: 0 24px 64px rgba(0,0,0,0.15); max-height: 90vh; overflow-y: auto; }
 .modalMeta { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
 .modalMetaIcon { width: 44px; height: 44px; border-radius: 12px; background: var(--cream); display: flex; align-items: center; justify-content: center; color: var(--brand); flex-shrink: 0; }
 .modalName { font-weight: 800; font-size: 1rem; color: var(--dark); margin: 0 0 3px; }
@@ -44,4 +44,12 @@
   .header { flex-direction: column; align-items: flex-start; gap: 8px; }
   .card { overflow-x: auto; }
   .table { min-width: 560px; }
+}
+@media (max-width: 480px) {
+  .table th, .table td { padding: 10px 12px; font-size: 0.82rem; }
+  .modal { padding: 24px 16px; }
+  .modalFooter { flex-direction: column; }
+  .replyBtn, .modalClose { width: 100%; text-align: center; }
+  .modalMeta { flex-wrap: wrap; }
+  .modalDate { margin-left: 0; margin-top: 4px; }
 }
