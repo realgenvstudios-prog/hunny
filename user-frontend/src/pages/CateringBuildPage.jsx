@@ -184,8 +184,8 @@ export default function CateringBuildPage() {
               <div className={styles.field}>
                 <label className={styles.label}>Pickup Restaurant</label>
                 <div className={styles.addressRow}>
-                  <span className={styles.addressText}>111 Fulton St, Accra</span>
-                  <a href="https://maps.google.com/?q=111+Fulton+St" target="_blank" rel="noreferrer" className={styles.goBtn}>
+                  <span className={styles.addressText}>14 Cantonments Rd, Accra, Ghana</span>
+                  <a href="https://maps.google.com/?q=14+Cantonments+Rd+Accra+Ghana" target="_blank" rel="noreferrer" className={styles.goBtn}>
                     GO <ChevronRight size={16} />
                   </a>
                 </div>

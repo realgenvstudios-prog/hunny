@@ -3,11 +3,6 @@ import { supabase } from '../lib/supabase';
 import { useAuth } from './AuthContext';
 
 const STORAGE_KEY = 'hunny_cart';
-// Custom items (non-products-table: catering add-ons, juices-box, chips-dips)
-// are stored here and never synced to Supabase.
-const CUSTOM_KEY = 'hunny_custom_cart';
-
-const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 const CartContext = createContext(null);
 
@@ -23,18 +18,6 @@ function loadLocalCart() {
 
 function saveLocalCart(items) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
-}
-
-function loadCustomCart() {
-  try {
-    return JSON.parse(localStorage.getItem(CUSTOM_KEY)) || [];
-  } catch {
-    return [];
-  }
-}
-
-function saveCustomCart(items) {
-  localStorage.setItem(CUSTOM_KEY, JSON.stringify(items));
 }
 
 // ── provider ───────────────────────────────────────────────

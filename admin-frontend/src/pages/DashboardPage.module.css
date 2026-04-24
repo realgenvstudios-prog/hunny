@@ -59,3 +59,14 @@
 .badge.orange { background: rgba(249,115,22,0.12); color: var(--orange); }
 .badge.blue   { background: rgba(59,130,246,0.12); color: var(--blue);   }
 .badge.red    { background: rgba(239,68,68,0.12);  color: var(--red);    }
+
+@media (max-width: 900px) {
+  .statsGrid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .card { overflow-x: auto; }
+  .table { min-width: 560px; }
+}
+@media (max-width: 480px) {
+  .statsGrid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .statValue { font-size: 1.3rem; }
+  .statCard { padding: 14px; gap: 10px; }
+}

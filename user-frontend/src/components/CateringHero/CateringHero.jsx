@@ -7,6 +7,7 @@ import { supabase } from '../../lib/supabase';
 
 export default function CateringHero() {
   const [tiers, setTiers] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [activeIdx, setActiveIdx] = useState(0);
   const navigate = useNavigate();
 
@@ -18,10 +19,27 @@ export default function CateringHero() {
       .order('sort_order')
       .then(({ data }) => {
         if (data && data.length > 0) setTiers(data);
-      });
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
   }, []);
 
-  if (tiers.length === 0) return null;
+  if (loading) {
+    return (
+      <section className={styles.hero}>
+        <div className={styles.skeleton}>
+          <div className={styles.skeletonTitle} />
+          <div className={styles.skeletonTitle} style={{ width: '60%' }} />
+          <div className={styles.skeletonTitle} style={{ width: '40%' }} />
+        </div>
+      </section>
+    );
+  }
+
+  if (tiers.length === 0) {
+    return null;
+  }
+
   const active = tiers[activeIdx];
 
   return (

@@ -5,22 +5,25 @@ const AuthContext = createContext(null);
 
 // Returns true/false on definitive DB result, null on timeout or error (inconclusive)
 async function checkAdmin(uid) {
-  try {
-    const result = await Promise.race([
-      supabase.from('profiles').select('is_admin').eq('id', uid).single(),
-      new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 4000)),
-    ]);
-    return result.data?.is_admin === true;
-  } catch (e) {
-    console.warn('checkAdmin inconclusive:', e.message);
-    return null; // null = we don't know, don't override cached state
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try {
+      const result = await Promise.race([
+        supabase.from('profiles').select('is_admin').eq('id', uid).single(),
+        new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 12000)),
+      ]);
+      return result.data?.is_admin === true;
+    } catch (e) {
+      console.warn(`checkAdmin attempt ${attempt + 1} inconclusive:`, e.message);
+    }
   }
+  return null;
 }
 
 export function AuthProvider({ children }) {
-  const [user,    setUser]    = useState(null);
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [user,       setUser]       = useState(null);
+  const [isAdmin,    setIsAdmin]    = useState(false);
+  const [loading,    setLoading]    = useState(true);
+  const [loginError, setLoginError] = useState(null);
 
   useEffect(() => {
     let active = true;
@@ -82,10 +85,29 @@ export function AuthProvider({ children }) {
       const u = session?.user ?? null;
       setUser(u);
       if (u) {
+        // Block UI while we verify — prevents premature redirect back to /login
+        if (active) setLoading(true);
         const admin = await checkAdmin(u.id);
-        if (active) setIsAdmin(admin);
+        if (active) {
+          if (admin === true) {
+            setIsAdmin(true);
+            setLoginError(null);
+            localStorage.setItem('admin_uid', u.id);
+          } else if (admin === null) {
+            // Timeout / inconclusive — keep signed in but show a retry prompt
+            setIsAdmin(false);
+            setLoginError('Admin verification timed out. Please try again.');
+          } else {
+            // Definitively not admin
+            setIsAdmin(false);
+            setLoginError('This account does not have admin access.');
+            localStorage.removeItem('admin_uid');
+          }
+          setLoading(false);
+        }
       } else {
         setIsAdmin(false);
+        if (active) setLoading(false);
       }
     });
 
@@ -97,9 +119,10 @@ export function AuthProvider({ children }) {
 
   const signIn  = (email, password) => supabase.auth.signInWithPassword({ email, password });
   const signOut = () => supabase.auth.signOut();
+  const clearLoginError = () => setLoginError(null);
 
   return (
-    <AuthContext.Provider value={{ user, isAdmin, loading, signIn, signOut }}>
+    <AuthContext.Provider value={{ user, isAdmin, loading, loginError, clearLoginError, signIn, signOut }}>
       {children}
     </AuthContext.Provider>
   );

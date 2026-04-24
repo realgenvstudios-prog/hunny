@@ -36,3 +36,11 @@
 .cancelBtn { flex: 1; padding: 12px; border: 1.5px solid var(--border); background: none; border-radius: 0; font-size: 0.85rem; font-weight: 800; color: var(--muted); }
 .saveBtn { flex: 1; padding: 12px; background: var(--dark); color: #fff; border: none; border-radius: 0; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; transition: background 0.2s; }
 .saveBtn:hover { background: var(--pink); }
+
+@media (max-width: 900px) {
+  .topRow { flex-direction: column; align-items: stretch; gap: 12px; }
+  .summaryCards { flex-wrap: wrap; }
+  .sCard { flex: 1; min-width: 120px; }
+  .card { overflow-x: auto; }
+  .table { min-width: 580px; }
+}

@@ -7,8 +7,7 @@
 alter table public.profiles
   add column if not exists is_admin boolean default false;
 
--- 2. Mark your account as admin (replace with YOUR user UUID from Supabase Auth → Users)
--- update public.profiles set is_admin = true where id = 'YOUR-USER-UUID-HERE';
+UPDATE public.profiles SET is_admin = true WHERE id = 'daefeaf0-79fe-4d95-a7b4-b07e75382960';
 
 -- Helper: check if current user is admin
 create or replace function public.is_admin()

@@ -10,7 +10,6 @@ import styles from './Navbar.module.css';
 const navLinks = [
   { label: 'MENU', to: '/menu' },
   { label: 'CATERING', to: '/catering' },
-  { label: 'ABOUT US', to: '/about' },
   { label: 'CONTACT', to: '/contact' },
 ];
 

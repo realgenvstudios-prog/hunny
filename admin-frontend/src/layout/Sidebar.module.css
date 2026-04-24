@@ -86,3 +86,14 @@
   color: var(--red);
   background-color: rgba(239,68,68,0.1);
 }
+
+@media (max-width: 900px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    z-index: 200;
+  }
+  .open {
+    transform: translateX(0);
+  }
+}

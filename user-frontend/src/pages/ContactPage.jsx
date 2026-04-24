@@ -50,7 +50,7 @@ export default function ContactPage() {
           WE'D LOVE TO<br />HEAR FROM YOU
         </motion.h1>
         <motion.p className={styles.heroSub} {...fadeUp(0.16)}>
-          Questions, feedback, catering inquiries  we're always happy to chat.
+          Questions, feedback, catering inquiries — we're always happy to chat.
         </motion.p>
       </section>
 

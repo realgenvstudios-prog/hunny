@@ -2,7 +2,7 @@
   width: 100%;
   position: relative;
   overflow: hidden;
-  background-color: #ffffff;
+  background-color: var(--cream);
 }
 
 /* ── Top section: tagline + food image ── */

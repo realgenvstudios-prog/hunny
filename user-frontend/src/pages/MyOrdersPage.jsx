@@ -54,6 +54,22 @@ export default function MyOrdersPage() {
     }
 
     fetchOrders();
+
+    // Live status updates — updates the matching order in state without a full refetch
+    const channel = supabase
+      .channel(`orders-user-${user.id}`)
+      .on(
+        'postgres_changes',
+        { event: 'UPDATE', schema: 'public', table: 'orders', filter: `user_id=eq.${user.id}` },
+        (payload) => {
+          setOrders((prev) =>
+            prev.map((o) => o.id === payload.new.id ? { ...o, status: payload.new.status } : o)
+          );
+        }
+      )
+      .subscribe();
+
+    return () => { supabase.removeChannel(channel); };
   }, [user]);
 
   function toggleExpand(id) {

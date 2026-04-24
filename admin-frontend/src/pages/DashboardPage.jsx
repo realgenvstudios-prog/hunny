@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { TrendingUp, ShoppingBag, Users, DollarSign, Clock, CheckCircle, XCircle, AlertCircle } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import styles from './DashboardPage.module.css';
@@ -87,7 +88,7 @@ export default function DashboardPage() {
       <div className={styles.card}>
         <div className={styles.cardHead}>
           <h2 className={styles.cardTitle}>Recent Orders</h2>
-          <a href="/orders" className={styles.viewAll}>View all →</a>
+          <Link to="/orders" className={styles.viewAll}>View all →</Link>
         </div>
         <table className={styles.table}>
           <thead>

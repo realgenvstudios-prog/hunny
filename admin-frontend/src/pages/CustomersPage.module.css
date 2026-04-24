@@ -31,3 +31,11 @@
 .bigStat { font-family: 'Titan One', cursive; font-size: 1.4rem; color: var(--pink); }
 .closeBtn { width: 100%; padding: 13px; background: var(--dark); color: #fff; border: none; border-radius: 0; font-size: 0.88rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; transition: background 0.2s; }
 .closeBtn:hover { background: var(--pink); }
+
+@media (max-width: 900px) {
+  .topRow { grid-template-columns: 1fr; }
+  .card { overflow-x: auto; }
+  .table { min-width: 580px; }
+  .searchWrap { max-width: 100%; }
+  .modalGrid { grid-template-columns: 1fr; }
+}

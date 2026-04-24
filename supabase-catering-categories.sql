@@ -38,6 +38,6 @@ INSERT INTO catering_categories (name, sort_order) VALUES
 ('Base',     1),
 ('Protein',  2),
 ('Toppings', 3),
-('Salsas',   4),
-('Tortilla', 5)
+('Drinks',   4),
+('Add ons', 5)
 ON CONFLICT (name) DO NOTHING;

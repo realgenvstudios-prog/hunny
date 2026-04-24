@@ -1,8 +1,9 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import {
   LayoutDashboard, ShoppingBag, UtensilsCrossed,
   Users, CalendarCheck, Tag, MessageSquare, Settings, LogOut
 } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 import styles from './Sidebar.module.css';
 
 const NAV = [
@@ -16,9 +17,17 @@ const NAV = [
   { to: '/settings',     icon: Settings,        label: 'Settings'       },
 ];
 
-export default function Sidebar() {
+export default function Sidebar({ isOpen, onClose }) {
+  const { signOut } = useAuth();
+  const navigate = useNavigate();
+
+  async function handleLogout() {
+    await signOut();
+    navigate('/login');
+  }
+
   return (
-    <aside className={styles.sidebar}>
+    <aside className={`${styles.sidebar} ${isOpen ? styles.open : ''}`}>
       <div className={styles.brand}>
         <span className={styles.brandText}>HUNNY</span>
         <span className={styles.brandTag}>Admin</span>
@@ -30,6 +39,7 @@ export default function Sidebar() {
             key={to}
             to={to}
             end={to === '/'}
+            onClick={onClose}
             className={({ isActive }) =>
               `${styles.link} ${isActive ? styles.active : ''}`
             }
@@ -40,7 +50,7 @@ export default function Sidebar() {
         ))}
       </nav>
 
-      <button className={styles.logout}>
+      <button className={styles.logout} onClick={handleLogout}>
         <LogOut size={18} />
         <span>Log Out</span>
       </button>

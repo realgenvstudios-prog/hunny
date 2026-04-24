@@ -18,12 +18,27 @@ export function useProducts(categorySlug) {
     setError(null);
 
     async function fetchProducts() {
+      // Step 1: resolve category slug → id
+      const { data: catData, error: catErr } = await supabase
+        .from('categories')
+        .select('id')
+        .eq('slug', categorySlug)
+        .single();
+
+      if (cancelled) return;
+
+      if (catErr || !catData) {
+        setError('Category not found');
+        setLoading(false);
+        return;
+      }
+
+      // Step 2: fetch products for that category
       const { data, error: err } = await supabase
         .from('products')
-        .select('id, name, description, price, image_url, categories(slug)')
+        .select('id, name, description, price, image_url')
         .eq('available', true)
-        .eq('categories.slug', categorySlug)
-        .not('categories', 'is', null)
+        .eq('category_id', catData.id)
         .order('name');
 
       if (cancelled) return;
@@ -34,14 +49,8 @@ export function useProducts(categorySlug) {
         return;
       }
 
-      // Filter by slug (the join filter above sometimes returns all rows; this is the safe guard)
-      const filtered = (data || []).filter(
-        (p) => p.categories?.slug === categorySlug
-      );
-
-      // Map DB shape → component shape
       setProducts(
-        filtered.map((p) => ({
+        (data || []).map((p) => ({
           id: p.id,
           name: p.name,
           ingredients: p.description || '',

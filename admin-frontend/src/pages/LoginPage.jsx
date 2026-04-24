@@ -3,7 +3,7 @@ import { useAuth } from '../context/AuthContext';
 import styles from './LoginPage.module.css';
 
 export default function LoginPage() {
-  const { signIn } = useAuth();
+  const { signIn, loginError, clearLoginError } = useAuth();
   const [email, setEmail]       = useState('');
   const [password, setPassword] = useState('');
   const [error, setError]       = useState('');
@@ -12,6 +12,7 @@ export default function LoginPage() {
   async function handleSubmit(e) {
     e.preventDefault();
     setError('');
+    clearLoginError();
     setLoading(true);
     const { error: err } = await signIn(email, password);
     setLoading(false);
@@ -26,7 +27,7 @@ export default function LoginPage() {
         <p className={styles.sub}>Admin Dashboard</p>
 
         <form className={styles.form} onSubmit={handleSubmit} noValidate>
-          {error && <p className={styles.error}>{error}</p>}
+          {(error || loginError) && <p className={styles.error}>{error || loginError}</p>}
 
           <div className={styles.field}>
             <label className={styles.label} htmlFor="email">Email</label>

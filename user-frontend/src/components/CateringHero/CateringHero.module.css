@@ -187,6 +187,28 @@
   overflow: hidden;
 }
 
+/* ── Loading skeleton ── */
+.skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 400px;
+}
+
+.skeletonTitle {
+  width: 80%;
+  height: 60px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #f0ece6 25%, #e8e3dc 50%, #f0ece6 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
 /* ── Responsive ── */
 @media (max-width: 1024px) {
   .hero {
@@ -255,5 +277,12 @@
   .disclaimer {
     max-width: 100%;
     text-align: left;
+  }
+}
+
+/* ── Phone-specific: more top clearance for fixed navbar ── */
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 170px;
   }
 }

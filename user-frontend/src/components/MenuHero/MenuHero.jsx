@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import styles from './MenuHero.module.css';
 
 export default function MenuHero() {
@@ -60,7 +59,7 @@ export default function MenuHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
           >
-            <Link to="/order" className={styles.orderBtn}>Order Now</Link>
+            <a href="#menu-section" className={styles.orderBtn}>Order Now</a>
           </motion.div>
         </div>
 

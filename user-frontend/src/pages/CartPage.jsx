@@ -16,13 +16,65 @@ export default function CartPage() {
   const { items, loading, subtotal, updateQty, removeFromCart, clearCart } = useCart();
   const { user } = useAuth();
   const navigate = useNavigate();
-  const total = subtotal + (items.length > 0 ? DELIVERY_FEE : 0);
 
   const [checkingOut, setCheckingOut] = useState(false);
   const [address, setAddress] = useState('');
   const [notes, setNotes] = useState('');
   const [orderLoading, setOrderLoading] = useState(false);
   const [orderError, setOrderError] = useState('');
+
+  // Promo code state
+  const [promoInput, setPromoInput] = useState('');
+  const [promoLoading, setPromoLoading] = useState(false);
+  const [promoError, setPromoError] = useState('');
+  const [promoDiscount, setPromoDiscount] = useState(null); // { code, type, value, amount }
+
+  const discountAmount = promoDiscount?.amount ?? 0;
+  const total = subtotal + (items.length > 0 ? DELIVERY_FEE : 0) - discountAmount;
+
+  async function applyPromo() {
+    const code = promoInput.trim().toUpperCase();
+    if (!code) return;
+    setPromoLoading(true);
+    setPromoError('');
+    setPromoDiscount(null);
+
+    const { data } = await supabase
+      .from('discount_codes')
+      .select('*')
+      .eq('code', code)
+      .eq('active', true)
+      .maybeSingle();
+
+    if (!data) {
+      setPromoError('Invalid or inactive promo code.');
+      setPromoLoading(false);
+      return;
+    }
+    if (data.expires_at && new Date(data.expires_at) < new Date()) {
+      setPromoError('This promo code has expired.');
+      setPromoLoading(false);
+      return;
+    }
+    if (data.max_uses && data.uses >= data.max_uses) {
+      setPromoError('This promo code has reached its limit.');
+      setPromoLoading(false);
+      return;
+    }
+    if (data.min_order && subtotal < Number(data.min_order)) {
+      setPromoError(`Minimum order of GHC ${data.min_order} required for this code.`);
+      setPromoLoading(false);
+      return;
+    }
+
+    const amount = data.type === 'percent'
+      ? subtotal * Number(data.value) / 100
+      : Math.min(Number(data.value), subtotal);
+
+    setPromoDiscount({ code: data.code, type: data.type, value: data.value, amount });
+    setPromoInput('');
+    setPromoLoading(false);
+  }
 
   // Load Paystack inline script once
   useEffect(() => {
@@ -61,9 +113,11 @@ export default function CartPage() {
                 user_id: user.id,
                 subtotal,
                 delivery_fee: DELIVERY_FEE,
+                discount: discountAmount,
                 total,
                 delivery_address: address.trim(),
                 notes: notes.trim() || null,
+                promo_code: promoDiscount?.code || null,
               },
               items,
             }),
@@ -153,6 +207,12 @@ export default function CartPage() {
               <div className={styles.summaryRows}>
                 <div className={styles.summaryRow}><span>Subtotal</span><span>GHC {subtotal.toFixed(2)}</span></div>
                 <div className={styles.summaryRow}><span>Delivery</span><span>{items.length > 0 ? `GHC ${DELIVERY_FEE}` : '—'}</span></div>
+                {promoDiscount && (
+                  <div className={`${styles.summaryRow} ${styles.summaryDiscount}`}>
+                    <span>Promo ({promoDiscount.code})</span>
+                    <span>−GHC {promoDiscount.amount.toFixed(2)}</span>
+                  </div>
+                )}
                 <div className={`${styles.summaryRow} ${styles.summaryTotal}`}><span>Total</span><span>GHC {total.toFixed(2)}</span></div>
               </div>
               <button
@@ -206,10 +266,31 @@ export default function CartPage() {
                 )}
               </AnimatePresence>
               <Link to="/menu" className={styles.continueLink}>← Continue shopping</Link>
-              <div className={styles.promo}>
-                <input type="text" className={styles.promoInput} placeholder="Promo code" />
-                <button className={styles.promoBtn}>APPLY</button>
-              </div>
+              {!promoDiscount ? (
+                <div className={styles.promoWrap}>
+                  <div className={styles.promo}>
+                    <input
+                      type="text"
+                      className={styles.promoInput}
+                      placeholder="Promo code"
+                      value={promoInput}
+                      onChange={(e) => { setPromoInput(e.target.value.toUpperCase()); setPromoError(''); }}
+                      onKeyDown={(e) => e.key === 'Enter' && applyPromo()}
+                    />
+                    <button className={styles.promoBtn} onClick={applyPromo} disabled={promoLoading || !promoInput.trim()}>
+                      {promoLoading ? '…' : 'APPLY'}
+                    </button>
+                  </div>
+                  {promoError && <p className={styles.promoError}>{promoError}</p>}
+                </div>
+              ) : (
+                <div className={styles.promoApplied}>
+                  <span className={styles.promoAppliedText}>
+                    {promoDiscount.code} applied — {promoDiscount.type === 'percent' ? `${promoDiscount.value}% off` : `GHC ${promoDiscount.value} off`}
+                  </span>
+                  <button className={styles.promoRemove} onClick={() => setPromoDiscount(null)}>Remove</button>
+                </div>
+              )}
             </div>
           </div>
 

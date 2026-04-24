@@ -6,7 +6,7 @@ const categories = [
   {
     name: 'Our Deals',
     image: 'https://res.cloudinary.com/dp3nduhuz/image/upload/v1775618758/BYOC-crop_iuz0ju.png',
-    link: '/deals',
+    link: '/',
     italic: true,
   },
   {
@@ -69,7 +69,7 @@ const categories = [
 
 export default function MenuGrid() {
   return (
-    <section className={styles.section}>
+    <section id="menu-section" className={styles.section}>
       {/* Heading */}
       <div className={styles.headingWrap}>
         <motion.h2
